@@ -1,6 +1,11 @@
 import Storage from './storage.js'
 
-class UI {
+let newId = 0;
+const libraryContainer = document.querySelector('.library');
+const newTitleInput = document.querySelector('.add-title-input');
+const newAuthorInput = document.querySelector('.add-author-input');
+
+export default class UI {
     static displayBook() {
       const books = Storage.getBooks();
       books.forEach((newBook) => {
