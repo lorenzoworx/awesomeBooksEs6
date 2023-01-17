@@ -1,8 +1,7 @@
-import Book from './modules/books.js'
-import Storage from './modules/storage.js'
-import UI from './modules/interface.js'
-import { DateTime } from "./modules/luxon.js";
-
+import Book from './modules/books.js';
+import Storage from './modules/storage.js';
+import UI from './modules/interface.js';
+import { DateTime } from './modules/luxon.js';
 
 const addBtn = document.querySelector('.add-book-btn');
 const newTitleInput = document.querySelector('.add-title-input');
@@ -15,7 +14,7 @@ const listSection = document.querySelector('.list-section');
 const addSection = document.querySelector('.add-section');
 const contactSection = document.querySelector('.contact-section');
 const dateToday = document.querySelector('.date-display');
-let newId = 0;
+
 // NAVBAR INTERACTIONS
 listLink.addEventListener('click', () => {
   listSection.style.display = 'flex';
@@ -33,8 +32,7 @@ contactLink.addEventListener('click', () => {
   addSection.style.display = 'none';
 });
 
-
-const addBookPressed =  (e) => {
+const addBookPressed = (e) => {
   e.preventDefault();
   const books = Storage.getBooks();
   const newTitle = newTitleInput.value;
@@ -54,7 +52,7 @@ const addBookPressed =  (e) => {
   }
 };
 // Function to remove new Book
-const removeBook =  (e) => {
+const removeBook = (e) => {
   if (e.target.classList.contains('remove-btn')) {
     let library = Storage.getBooks();
     const { id } = e.target;
@@ -68,8 +66,7 @@ addBtn.addEventListener('click', addBookPressed);
 libraryContainer.addEventListener('click', removeBook);
 document.addEventListener('DOMContentLoaded', UI.displayBook);
 
-
 // Display date
-const dateDisplay =  DateTime.now().toLocaleString(DateTime.DATETIME_MED);
+const dateDisplay = DateTime.now().toLocaleString(DateTime.DATETIME_MED);
 dateToday.textContent = dateDisplay;
 document.addEventListener('DOMContentLoaded', dateToday);
